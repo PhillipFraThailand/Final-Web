@@ -12,7 +12,6 @@
         </tr>
     </thead>
 <!-- IF LOGGED IN AS ADMIN SHOW EXTRA OPTIONS -->
-<!-- IF LOGGED IN AS ADMIN SHOW EXTRA OPTIONS -->
     <tbody>
         <?php foreach ($results as $row) { 
                 echo "<tr>
@@ -23,6 +22,8 @@
     </tbody>
 </table>
 
+
+<!-- Pagination buttons -->
 <?php
     if(isset($_GET['page']) && $_GET['page'] >= 1) {
         $nextPage = (int)$_GET['page'] + 1;

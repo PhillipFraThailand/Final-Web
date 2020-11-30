@@ -28,7 +28,7 @@
 
         case 'albums':
             require_once('Source/UserDetails.php');
-            echo('Albums');
+            echo('Index Echo.');
         break;
 
         case 'tracks':

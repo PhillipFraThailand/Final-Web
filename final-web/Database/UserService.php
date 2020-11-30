@@ -10,19 +10,15 @@
         public string $lastName;
         public string $address;
 
-    
-        // Fetch users for debugging
+        // Fetch users method for debugging
         function fetchUsers() {
-            // Create a PDO object to connect with
             $db = new DB();
             $con = $db->connect();          
             $results = array();
 
-            // If connection and limit because we just need to fetch some users to debug
             if($con) {
                 $limit = 25;
 
-            // Query
                 $query = <<<QUERY
                 SELECT * FROM customer
                 LIMIT $limit;
@@ -33,7 +29,7 @@
 
                 // Add the rows from statement to results
                 while($row = $stmt->fetch())
-                    $results[] = [$row['email']];
+                    $results[] = [$row['Email']];
                 
                 // Close connection
                 $stmt = null;

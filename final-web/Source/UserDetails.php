@@ -1,16 +1,16 @@
 <?php
 //Details page for user
-    session_start();
     require_once('Database/UserService.php');
     $dp = new UserService();
     $results = $dp->fetchUsers();
 
     if (isset($_SESSION)) {
-        echo('Session is set');
+        echo('UserDetails if session is set.');
     } else {
-        echo('No Session');
+        echo('UserDetails if session is NOT set');
     };
-
+    
+    print_r($results[0]);
 ?>
 
 
