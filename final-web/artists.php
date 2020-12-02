@@ -3,9 +3,6 @@
     $dp = new ArtistService();
     $results = $dp->fetchArtists();
 ?>
-
-Artists
-
 <!-- Table header -->
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
     <thead>
@@ -23,7 +20,6 @@ Artists
         ?>
     </tbody>
 </table>
-
 
 <!-- Pagination buttons SET offset and limit as get parameters-->
 <?php
