@@ -1,5 +1,6 @@
 <?php
-    require_once('DbConnection.php');
+    require_once('header.php');
+    require_once('database-connection.php');
 
     //Service which handles retrieving data for artists
     class ArtistService {

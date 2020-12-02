@@ -1,6 +1,9 @@
 <?php
 
 class DB {
+
+    public $pdo;
+
     public function connect() {
         $cServer = 'localhost';     // Server
         $cDB = 'chinook_abridged';  // Database name

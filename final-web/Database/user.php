@@ -1,8 +1,7 @@
 <?php
-    require_once('DbConnection.php');
+    require_once('database-connection.php');
 
-    // Service which handles retrieving data for artists
-    class UserService extends DB {
+    class User extends DB {
 
         public int $userId;
         public string $email;

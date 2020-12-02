@@ -1,8 +1,10 @@
 <?php
-    require_once('Database/ArtistService.php');
+    require_once('Database/artists.php');
     $dp = new ArtistService();
     $results = $dp->fetchArtists();
 ?>
+
+Artists
 
 <!-- Table header -->
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -23,7 +25,7 @@
 </table>
 
 
-<!-- Pagination buttons -->
+<!-- Pagination buttons SET offset and limit as get parameters-->
 <?php
     if(isset($_GET['page']) && $_GET['page'] >= 1) {
         $nextPage = (int)$_GET['page'] + 1;
@@ -42,4 +44,3 @@
         echo '</form>';  
     }
 ?>
-
