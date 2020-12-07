@@ -1,7 +1,6 @@
 <?php
     require_once('Database/user.php');
     require_once('sanitizer.php');
-    echo('start signup-handler');
 
     // Validates input in the create function with prepare
     $user = new User();
@@ -22,13 +21,14 @@
         $fax = sanitize_input($_POST['fax']);
     };
 
-    $user->create($firstname, $lastName, $password, $email, $company, $address, $city, $state, $country, 
-                    $postalCode, $phone, $fax);
+    // insert into DB
+    $user->create($firstname, $lastName, $password, $email, $company, $address, $city, $state, $country, $postalCode, $phone, $fax);
 
-
+    // if insert was succesfull
     if ($user) {
-        echo('succes creating user, go back to login');
-        echo('<a href="localhost:8080/final-web"></a>');
+        echo('succes creating user! Go back to ');
+        echo('<a href="./index.php">Home</a>');
+    } else {
+        echo('Error creating user');
     }
-
 ?>

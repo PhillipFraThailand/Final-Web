@@ -29,7 +29,7 @@
             
             // Add the rows from statement to results
             while($row = $stmt->fetch()) {
-                $results[] = [$row['Name']];
+                $results[] = [$row['Name']]; 
             }
             // Close connection
             $stmt = null;

@@ -1,7 +1,7 @@
 <?php
 
     class DB {
-        public $pdo;
+        protected $pdo;
 
         // public function connect() {
         public function __construct() {

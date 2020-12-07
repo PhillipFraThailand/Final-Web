@@ -1,7 +1,6 @@
 <?php
     session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,21 +57,26 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
 
-                    <!-- Logged in  MAKE INTO A BUTTON LATER WHEN U CAN TEST IT-->
+                    <!-- Logged -->
                     <?php if (isset($_SESSION['userId'])): ?>
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Account
-                                Session is set
-                                <span class="caret"></span>
-                            </a>
+                        <button class="btn btn-light dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </button>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Details</a>
-                                <a class="dropdown-item" href="#">Sign out</a>
+
+                                <form action="http://localhost:8080/final-web/user-details.php" method="GET">
+                                    <button type="submit" class="btn btn-light dropdown-item" >Details</button>
+                                </form>
+
+                                <form action="http://localhost:8080/final-web/user-service.php" method="POST">
+                                    <button type="submit" class="btn btn-light dropdown-item" name="action" value="logout">Sign out</button>
+                                </form>
+
                             </div>
                     <?php endif; ?>
 
                     <!-- !Logged in require the loginModal-->
-                    <?php if (!isset($_SESSION['userId'])): //require_once('login/login-modal.php') ?>
+                    <?php if (!isset($_SESSION['userId'])):?>
 	                    <!-- Button to Trigger Modal -->
                             <button href="#modalLogin" class="btn btn-light trigger-btn" data-toggle="modal">Sign in</a>
                     <?php endif; ?>
@@ -99,20 +103,21 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
 
-			<!-- Input fields -->
 			<div class="modal-body">
-				<form action="./login-handler.php" method="POST">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="email" name="email" required="required">
+                <form action="./user-service.php" method="POST">
+                    <!-- Input fields -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="email" name="email" required="required">
                     </div>
-
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="password" name="password" required="required">
+                    
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="password" name="password" required="required">
                     </div>
-
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
-					</div>
+                    
+                    <!-- set action post variable to be login -->
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg" name="action" value="login">
+                    </div>
 				</form>
             </div>
 
@@ -136,8 +141,8 @@
             </div>
 
             <div class="modal-body">
-                <!-- Input fields -->
-                <form action="./signup-handler.php" method="POST">
+                <form action="./user-service.php" method="POST">
+                    <!-- Input fields -->
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="First name" name="firstName" required="required">
                     </div>
@@ -149,45 +154,45 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Password" name="password" required="required">
                     </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Email" name="email" required="required">
-                    </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Company" name="company" required="required">
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Address" name="address" required="required">
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="City" name="city" required="required">
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="State" name="state" required="required">
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Country" name="country" required="required">
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Postal code" name="postalCode" required="required">
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Phone number" name="phone" required="required">
                     </div>
-
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Fax" name="fax" required="required">
                     </div>
-                    <!-- Button -->
+                    
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Register"></button>
+                        <input type="text" class="form-control" placeholder="Email" name="email" required="required">
+                    </div>
+                    <!-- set action post variable to be login -->
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg" name="action" value="register"></button>
                     </div>
                 </form>
             </div>

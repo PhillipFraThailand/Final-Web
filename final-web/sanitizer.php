@@ -6,4 +6,10 @@
         $data = htmlspecialchars($data);
         return $data;
     }
+
+// sanitize the output from the database
+    function sanitizeDB_output($data) {
+        $data = htmlentities($data);
+        return $data;
+    }
 ?>
