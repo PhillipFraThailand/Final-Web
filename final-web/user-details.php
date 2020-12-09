@@ -87,75 +87,75 @@
         <div class="modal-body">
             <form action="./user-service.php" method="POST">
 
-            <div class="form-group">
-                <label>First name</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['FirstName']); ?>" name="firstName" required="required">
-            </div>
+                <div class="form-group">
+                    <label>First name</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($firstName); ?>" name="firstName" required="required" value="<?php echo($firstName); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Last name</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['LastName']); ?>" name="lastname" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Last name</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($lastName); ?>" name="lastName" required="required" value="<?php echo($lastName); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Old password</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['Password']); ?>" name="oldPassword" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Old password</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($password); ?>" name="oldPassword" required="required">
+                </div>
 
-            <div class="form-group">
-                <label>New password</label>
-                <input type="text" class="form-control" placeholder="New password" name="newPassword" required="required">
-            </div>
+                <div class="form-group">
+                    <label>New password</label>
+                    <input type="text" class="form-control" placeholder="New password" name="newPassword" required="required">
+                </div>
 
-            <div class="form-group">
-                <label>Company</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['Company']); ?>" name="company" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($company); ?>" name="company" required="required"  value="<?php echo($lastName); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Address</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['Address']); ?>" name="address" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($address); ?>" name="address" required="required"  value="<?php echo($address); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>City</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['City']); ?>" name="city" required="required">
-            </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($city); ?>" name="city" required="required"  value="<?php echo($city); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>State</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['State']); ?>" name="state" required="required">
-            </div>
+                <div class="form-group">
+                    <label>State</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($state); ?>" name="state" required="required" value="<?php echo($state); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Country</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['Country']); ?>" name="country" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Country</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($country); ?>" name="country" required="required"  value="<?php echo($country); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Postal code</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['PostalCode']); ?>" name="postalCode" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Postal code</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($postalCode); ?>" name="postalCode" required="required"  value="<?php echo($postalCode); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Phone</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['Phone']); ?>" name="phone" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($phone); ?>" name="phone" required="required"  value="<?php echo($phone); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Fax</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['Fax']); ?>" name="fax" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Fax</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($fax); ?>" name="fax" required="required"  value="<?php echo($fax); ?>">
+                </div>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text" class="form-control" placeholder="<?php echo($result['Email']); ?>" name="email" required="required">
-            </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" placeholder="<?php echo($email); ?>" name="newEmail" required="required"  value="<?php echo($email); ?>">
+                </div>
 
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary btn-block btn-lg" name="action" value="updateUser"></button>
-            </div>
-
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-block btn-lg" name="action" value="updateUser"></button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

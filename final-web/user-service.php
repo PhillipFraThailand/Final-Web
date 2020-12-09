@@ -19,7 +19,7 @@
             break;
 
         case 'updateUser':
-            echo('updateUser');
+            updateUser();
             break;
 
         default:
@@ -99,7 +99,14 @@
             $oldEmail = $_SESSION['email'];
         };
 
-        $user->updateUser($firstName, $lastName, $oldPassword, $newPassword, $company, $address, $city, $state, $country, $postalCode, $phone, $fax, $oldEmail, $newEmail);
+        $status = $user->updateUser($firstName, $lastName, $oldPassword, $newPassword, $company, $address, $city, $state, $country, $postalCode, $phone, $fax, $oldEmail, $newEmail);
+
+        // if succes updating
+        if ($status) {
+            echo('success updating info');
+        } else {
+            echo('failure updating info');
+        }
 
     }
 ?>

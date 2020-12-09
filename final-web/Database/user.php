@@ -80,50 +80,77 @@
             }
         }
 
-        //updates a user if the email does not exist use the session email as the old email
+        // Updates a user
         function updateUser($firstName, $lastName, $oldPassword, $newPassword, $company, $address, 
                             $city, $state, $country, $postalCode, $phone, $fax, $oldEmail, $newEmail) {
-
-            // check if user already exists
-            $query = <<<SQL
-                SELECT COUNT(*) AS total FROM customer WHERE email = ?;
+            // Update query
+            $updateQuery = <<<SQL
+                UPDATE customer 
+                SET FirstName = ?, LastName = ?, Password = ?, Company = ?, Address = ?, City = ?, State = ?, Country = ?, PostalCode = ?, Phone = ?, Fax = ?, Email = ?
+                WHERE Email = ?;
+            SQL;
+            
+            // Get user query
+            $getUserQuery = <<<SQL
+                SELECT CustomerId, Password FROM customer WHERE Email = ?;
             SQL;
 
-            //  prepare and run statement
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$newEmail]);
-            
-            // if email exists return false
-            if ($stmt->rowCount()>0) {
-                return false;    
-            
-            // if email is not taken update the row
-            } else {
-                $updateQuery = <<<SQL
-                    UPDATE customer 
-                    SET FirstName = ?, LastName = ?, Password = ?, Company = ?, Address = ?, City = ?, State = ?, Country = ?, PostalCode = ?, Phone = ?, Fax = ?, Email = ?
-                    WHERE Email = ?;
-                SQL;
+            // check if the user is trying to update the email
+            if ($oldEmail != $newEmail) {
+                // prepare, execute and continue if query succeeds
+                $stmt = $this->pdo->prepare($getUserQuery);
+                if ( $stmt->execute([$oldEmail]) ) {
 
-                // Prepare the statement
-                $stmt = $this->pdo->prepare($query);
+                    // extract result and verify password
+                    $row = $stmt->fetch();
+                    $validPassword = password_verify($oldPassword, $row['Password']);
 
-                // If the execution is a success
-                if ($stmt->execute([$firstName, $lastName, $newPassword, $company, $address, $city, $state, $country, $postalCode, $phone, $fax, $newEmail])) {
-                    $this->disconnect();
-                    return true;
+                    // if password is valid check if there is no user with the new mail already
+                    if ($validPassword) {
+                        $query = <<<SQL
+                            SELECT COUNT(*) AS total FROM customer WHERE email = ?;
+                        SQL;
 
-                // error in query execution
+                        //  prepare and execute the query. If its a success check count
+                        $stmt = $this->pdo->prepare($query);
+                        if( $stmt->execute([$newEmail]) ) {
+                            // if email exists return false
+                            if ($stmt->rowCount() > 0) {
+                                return false;    
+                            // if email is not taken update the row
+                            } else {                                
+                                //  prepare and execute the query. If its a success check count
+                                $stmt = $this->pdo->prepare($updateQuery);
+                                if ($stmt->execute([$firstName, $lastName, $newPassword, $company, $address, $city, $state, $country, $postalCode, $phone, $fax, $newEmail, $oldEmail])) {
+                                    $this->disconnect();
+                                    return true;
+
+                                // if error in query execution
+                                } else {
+                                    $this->disconnect();
+                                    return false;
+                                }
+                            }   
+                        }
+                    } else {
+                        //error validating password for user
+                        echo('error validating password for user');
+                    }
                 } else {
-                    $this->disconnect();
-                    return false;
+                    // error checking user
+                    echo('error checking user');
                 }
+            } elseif ($oldEmail = $newEmail) {
+                // add user without checking email
+
+
             }
         }
 
+
         // validate login credentials
         function createSession($email, $password) {
-            // get the customer with matching email
+            // query gets the user with the email
             $query = <<<SQL
                 SELECT CustomerId, FirstName, LastName, Password 
                 FROM customer WHERE Email = ?;
